@@ -1,0 +1,17 @@
+{
+  "cases": 4,
+  "old": {
+    "false_positive": 0,
+    "false_negative": 2
+  },
+  "aligned": {
+    "false_positive": 0,
+    "false_negative": 0
+  },
+  "off": {
+    "false_positive": 2,
+    "false_negative": 0
+  },
+  "observed_effect": "Direction-specific contract alignment accepts both evidenced valid packet shapes and rejects both deliberately malformed derivatives; obsolete universal keys reject both valid shapes; validation-off accepts both malformed shapes.",
+  "boundary": "Four local cases only. Presence/non-empty validation only. No measured production downstream CONTRACT count, latency, or wasted Build/Return cost."
+}
