@@ -1,0 +1,54 @@
+[
+  {
+    "name": "progress_without_evidence",
+    "input": {
+      "can_progress": true,
+      "evidence_ok": false,
+      "commit_requested": true
+    },
+    "expected": {
+      "progress_allowed": true,
+      "commit_allowed": false,
+      "state": "working"
+    }
+  },
+  {
+    "name": "progress_with_evidence",
+    "input": {
+      "can_progress": true,
+      "evidence_ok": true,
+      "commit_requested": true
+    },
+    "expected": {
+      "progress_allowed": true,
+      "commit_allowed": true,
+      "state": "committed"
+    }
+  },
+  {
+    "name": "blocked_work",
+    "input": {
+      "can_progress": false,
+      "evidence_ok": false,
+      "commit_requested": true
+    },
+    "expected": {
+      "progress_allowed": false,
+      "commit_allowed": false,
+      "state": "blocked"
+    }
+  },
+  {
+    "name": "working_no_commit_requested",
+    "input": {
+      "can_progress": true,
+      "evidence_ok": false,
+      "commit_requested": false
+    },
+    "expected": {
+      "progress_allowed": true,
+      "commit_allowed": false,
+      "state": "working"
+    }
+  }
+]
