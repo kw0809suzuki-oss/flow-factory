@@ -1,0 +1,74 @@
+[
+  {
+    "name": "valid_b_to_c",
+    "direction": "B_TO_C",
+    "expected_valid": true,
+    "packet": {
+      "parent_world": "B",
+      "parent_source_id": "origin-001",
+      "parent_source_title": "ORIGIN-SEED-001",
+      "objective": "verify",
+      "requirements": [
+        "test"
+      ],
+      "constraints": [
+        "no unsupported commit"
+      ],
+      "expected_artifact": "validator result",
+      "boundary": "evidence required",
+      "reentry_target": "World B"
+    }
+  },
+  {
+    "name": "malformed_b_to_c_missing_boundary",
+    "direction": "B_TO_C",
+    "expected_valid": false,
+    "packet": {
+      "parent_world": "B",
+      "parent_source_id": "origin-001",
+      "parent_source_title": "ORIGIN-SEED-001",
+      "objective": "verify",
+      "requirements": [
+        "test"
+      ],
+      "constraints": [
+        "no unsupported commit"
+      ],
+      "expected_artifact": "validator result",
+      "reentry_target": "World B"
+    }
+  },
+  {
+    "name": "valid_c_to_b",
+    "direction": "C_TO_B",
+    "expected_valid": true,
+    "packet": {
+      "task_id": "task-001",
+      "source_id": "src-001",
+      "parent_source_id": "origin-001",
+      "artifact_id": "artifact-001",
+      "build_status": "complete",
+      "execution_environment": "isolated",
+      "evidence": [
+        "4 cases"
+      ],
+      "boundary": "limited sample",
+      "reentry": "World B"
+    }
+  },
+  {
+    "name": "malformed_c_to_b_missing_evidence",
+    "direction": "C_TO_B",
+    "expected_valid": false,
+    "packet": {
+      "task_id": "task-001",
+      "source_id": "src-001",
+      "parent_source_id": "origin-001",
+      "artifact_id": "artifact-001",
+      "build_status": "complete",
+      "execution_environment": "isolated",
+      "boundary": "limited sample",
+      "reentry": "World B"
+    }
+  }
+]
