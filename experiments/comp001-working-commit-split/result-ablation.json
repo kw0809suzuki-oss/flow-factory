@@ -1,0 +1,49 @@
+{
+  "cases": 4,
+  "component_on": {
+    "progress_without_evidence": {
+      "progress_allowed": true,
+      "commit_allowed": false,
+      "state": "working"
+    },
+    "progress_with_evidence": {
+      "progress_allowed": true,
+      "commit_allowed": true,
+      "state": "committed"
+    },
+    "blocked_work": {
+      "progress_allowed": false,
+      "commit_allowed": false,
+      "state": "blocked"
+    },
+    "working_no_commit_requested": {
+      "progress_allowed": true,
+      "commit_allowed": false,
+      "state": "working"
+    }
+  },
+  "component_off": {
+    "progress_without_evidence": {
+      "progress_allowed": true,
+      "commit_allowed": true,
+      "state": "committed"
+    },
+    "progress_with_evidence": {
+      "progress_allowed": true,
+      "commit_allowed": true,
+      "state": "committed"
+    },
+    "blocked_work": {
+      "progress_allowed": false,
+      "commit_allowed": false,
+      "state": "blocked"
+    },
+    "working_no_commit_requested": {
+      "progress_allowed": true,
+      "commit_allowed": false,
+      "state": "working"
+    }
+  },
+  "observed_effect": "Only the progress_without_evidence case diverged: component-on preserved working progress while refusing commit; component-off committed the unsupported state.",
+  "boundary": "Four synthetic control cases plus one prior real-use Drive observation. Evidence truth assessment remains external. This does not establish general production fitness."
+}
