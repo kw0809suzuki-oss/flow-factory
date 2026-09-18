@@ -1,0 +1,63 @@
+{
+  "draws": 100,
+  "controls": 1000,
+  "seed": 20260919,
+  "comparison": {
+    "repeated_gap_draw_fraction": {
+      "real": 0,
+      "control_mean": 0.0001,
+      "z": -0.0709,
+      "p": 1
+    },
+    "largest_hole_mean": {
+      "real": 15.54,
+      "control_mean": 15.78659,
+      "z": -0.5846,
+      "p": 0.5834
+    },
+    "mirror_pairs_mean": {
+      "real": 0.32,
+      "control_mean": 0.34787,
+      "z": -0.5268,
+      "p": 0.6633
+    },
+    "mod3_peak_mean": {
+      "real": 3.15,
+      "control_mean": 3.14551,
+      "z": 0.0635,
+      "p": 1
+    },
+    "carry_overlap_mean": {
+      "real": 0.84848,
+      "control_mean": 0.8403,
+      "z": 0.0999,
+      "p": 0.971
+    },
+    "carry_near1_mean": {
+      "real": 2.27273,
+      "control_mean": 2.19025,
+      "z": 0.7244,
+      "p": 0.5115
+    },
+    "carry_near2_mean": {
+      "real": 3.35354,
+      "control_mean": 3.20922,
+      "z": 1.1847,
+      "p": 0.2597
+    },
+    "rank_motion_abs_mean": {
+      "real": 6.8771,
+      "control_mean": 6.8549,
+      "z": 0.0587,
+      "p": 0.9351
+    },
+    "pair_memory_10_mean": {
+      "real": 2.32323,
+      "control_mean": 2.21025,
+      "z": 0.7079,
+      "p": 0.5095
+    }
+  },
+  "interesting_at_p_le_0_05": {},
+  "boundary": "Post-hoc metrics on first 100 historical draws; exploratory only; no prediction claim. Multiple comparisons not corrected because no metric crossed 0.05 in this first pass."
+}
