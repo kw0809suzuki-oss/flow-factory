@@ -1,0 +1,81 @@
+{
+  "experiment": "static-to-motion-structure-retention-v0.1",
+  "samples": [
+    {
+      "label": "still_01",
+      "features": {
+        "female_android": true,
+        "white_black_armor": true,
+        "blue_luminous_core": true,
+        "circular_field": true,
+        "floating_symbols": true
+      },
+      "changed": {
+        "framing": "triptych_composite",
+        "pose": "mixed",
+        "text_layer": false
+      }
+    },
+    {
+      "label": "still_02",
+      "features": {
+        "female_android": true,
+        "white_black_armor": true,
+        "blue_luminous_core": true,
+        "circular_field": true,
+        "floating_symbols": true
+      },
+      "changed": {
+        "framing": "wide_full_body",
+        "pose": "floating_open",
+        "text_layer": false
+      }
+    },
+    {
+      "label": "still_03",
+      "features": {
+        "female_android": true,
+        "white_black_armor": true,
+        "blue_luminous_core": true,
+        "circular_field": true,
+        "floating_symbols": true
+      },
+      "changed": {
+        "framing": "three_stage_panel",
+        "pose": "multi_state",
+        "text_layer": true
+      }
+    },
+    {
+      "label": "still_04",
+      "features": {
+        "female_android": true,
+        "white_black_armor": true,
+        "blue_luminous_core": true,
+        "circular_field": true,
+        "floating_symbols": true
+      },
+      "changed": {
+        "framing": "wide_centered",
+        "pose": "front_centered",
+        "text_layer": true
+      }
+    },
+    {
+      "label": "video_frame_01",
+      "features": {
+        "female_android": true,
+        "white_black_armor": true,
+        "blue_luminous_core": true,
+        "circular_field": true,
+        "floating_symbols": true
+      },
+      "changed": {
+        "framing": "portrait_mid_body",
+        "pose": "front_gesture",
+        "text_layer": false
+      }
+    }
+  ],
+  "boundary": "Manual visual observation of four ordered stills and one representative frame from a ~3.04s MP4. This does not establish full-frame temporal persistence or production intent."
+}
