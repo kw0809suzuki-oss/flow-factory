@@ -1,0 +1,17 @@
+{
+  "name": "handoff-freshness-gate-v0.1",
+  "purpose": "Prevent execution of a handoff whose premise has been superseded by newer evidence.",
+  "input": {
+    "handoff_id": "string",
+    "handoff_created_at": "timestamp",
+    "premise_claims": "array of {key,value}",
+    "newer_evidence": "array of {artifact_ref,observed_at,claims}"
+  },
+  "decision": [
+    "fresh: no newer evidence contradicts or supersedes premise claims",
+    "stale: newer evidence changes a premise required by the handoff objective",
+    "unknown: evidence cannot be compared safely"
+  ],
+  "rule": "stale handoffs are not executed as-is; regenerate from current evidence.",
+  "boundary": "Freshness is about premise currency, not truth of the newer evidence itself."
+}
