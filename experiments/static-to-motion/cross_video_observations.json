@@ -1,0 +1,23 @@
+{
+  "experiment": "cross-video-structure-retention-replication-v0.3",
+  "source_video": "秒版_Structure_Activation（構造起動.mp4",
+  "relation_to_prior": "distinct video in the same broader SF/Origin Field project family; not an independent material family",
+  "duration_seconds": 10,
+  "sampled_frames": 12,
+  "observed": {
+    "persistent_classes": [
+      "humanoid/android subject remains the scene anchor",
+      "blue/cyan computational-information environment remains dominant",
+      "interface/panel relation remains present around the subject"
+    ],
+    "transformed_or_role_shifted": [
+      "camera scale and subject orientation change strongly",
+      "circular motif changes role: background UI motif -> reduced/absent mid-clip -> enclosing sphere/field late",
+      "text overlay appears only in some middle frames",
+      "subject visual detail becomes silhouette at wide late frames"
+    ],
+    "failure_case": "The exact five-feature set from 力の胎動.mp4 does not remain directly verifiable across all frames of this second video."
+  },
+  "interpretation": "What replicates more cleanly is the method: separate persistent relation classes from transformed presentation/role dimensions, rather than reusing a fixed feature checklist.",
+  "boundary": "Manual visual coding of 12 sampled frames. The second video is distinct but belongs to the same broader project family, so cross-family generality is not established."
+}
