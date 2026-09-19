@@ -1,0 +1,36 @@
+{
+  "experiment": "static-to-motion-temporal-retention-v0.2",
+  "frames": 12,
+  "fps_sampled": 4,
+  "duration_seconds": 3,
+  "stable_relations": {
+    "female_android": {
+      "present": 12,
+      "total": 12
+    },
+    "white_black_armor": {
+      "present": 12,
+      "total": 12
+    },
+    "blue_luminous_core": {
+      "present": 12,
+      "total": 12
+    },
+    "circular_field": {
+      "present": 12,
+      "total": 12
+    },
+    "floating_symbols": {
+      "present": 12,
+      "total": 12
+    }
+  },
+  "transformed_over_time": [
+    "arm_position",
+    "torso_orientation",
+    "gesture",
+    "light_distribution"
+  ],
+  "observed_effect": "All five structural relations remained present across all 12 sampled frames while pose and light presentation changed over time.",
+  "boundary": "Manual visual coding of 12 uniformly sampled frames from one short clip. No claim of general invariance across other videos, models, prompts, or editing pipelines."
+}
