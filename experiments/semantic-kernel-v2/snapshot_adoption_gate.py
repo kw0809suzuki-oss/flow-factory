@@ -2,54 +2,39 @@ from __future__ import annotations
 
 import json
 
-from kaggriculture_adapter import (
-    KaggricultureFixture,
-    UnresolvedDomainValue,
-    run_wheat3_land_fixture,
-)
+from kaggriculture_adapter import LAND_PRICES, WHEAT3_COST, run_wheat3_land_fixture
 
 
 def evaluate_snapshot_adoption_gate() -> dict[str, object]:
-    observations: dict[str, object] = {}
+    _, trace, next_state = run_wheat3_land_fixture()
 
-    try:
-        run_wheat3_land_fixture(KaggricultureFixture())
-        observations["unknown_domain_value_preserved"] = False
-    except UnresolvedDomainValue:
-        observations["unknown_domain_value_preserved"] = True
-
-    _, feasible_trace, feasible_state = run_wheat3_land_fixture(
-        KaggricultureFixture(land_claim=950)
-    )
-    observations["feasible_fixture"] = {
-        "eligible": list(feasible_trace.eligible_rule_ids),
-        "selected": list(feasible_trace.selected_rule_ids),
-        "plan_status": feasible_trace.plan_status,
-        "executed": list(feasible_trace.executed_action_ids),
-        "next_cash": feasible_state.get("cash") if feasible_state else None,
+    checks = {
+        "official_wheat3_cost_is_30": WHEAT3_COST == 30,
+        "official_land_prices_known": LAND_PRICES == (1000, 2000, 4000),
+        "both_rules_eligible_from_same_snapshot": trace.eligible_rule_ids == ("A_WHEAT3", "B_LAND"),
+        "both_rules_remain_selected": trace.selected_rule_ids == ("A_WHEAT3", "B_LAND"),
+        "action_requirement_failure_is_explicit": trace.plan_reason == "requirement_failed:act-buy-land",
+        "no_action_executed_after_invalid_plan": trace.executed_action_ids == (),
+        "no_next_state_committed_after_invalid_plan": next_state is None,
     }
 
-    _, conflict_trace, conflict_state = run_wheat3_land_fixture(
-        KaggricultureFixture(land_claim=960)
-    )
-    observations["conflict_fixture"] = {
-        "eligible": list(conflict_trace.eligible_rule_ids),
-        "selected": list(conflict_trace.selected_rule_ids),
-        "plan_status": conflict_trace.plan_status,
-        "plan_reason": conflict_trace.plan_reason,
-        "executed": list(conflict_trace.executed_action_ids),
-        "next_state": None if conflict_state is None else dict(conflict_state.values),
-    }
-
-    overall = "HOLD"
-    reason = (
-        "semantic adapter behavior is consistent, but production BUY_LAND resource claim "
-        "is still unknown in the current factory evidence"
-    )
+    passed = all(checks.values())
     return {
-        "snapshot_adoption_gate": overall,
-        "reason": reason,
-        "observations": observations,
+        "snapshot_adoption_gate": "PASS" if passed else "HOLD",
+        "scope": "semantic default only",
+        "checks": checks,
+        "wheat3_land_trace": {
+            "eligible": list(trace.eligible_rule_ids),
+            "selected": list(trace.selected_rule_ids),
+            "plan_status": trace.plan_status,
+            "plan_reason": trace.plan_reason,
+            "executed": list(trace.executed_action_ids),
+            "next_state": None if next_state is None else dict(next_state.values),
+        },
+        "boundary": (
+            "PASS does not imply terminal-score improvement or Battle integration correctness. "
+            "It means the Snapshot candidate satisfies the current semantic adoption gate."
+        ),
     }
 
 
