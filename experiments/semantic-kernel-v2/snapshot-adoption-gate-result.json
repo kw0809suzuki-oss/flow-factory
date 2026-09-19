@@ -1,22 +1,22 @@
 {
-  "snapshot_adoption_gate": "HOLD",
-  "reason": "semantic adapter behavior is consistent, but production BUY_LAND resource claim is still unknown in the current factory evidence",
-  "observations": {
-    "unknown_domain_value_preserved": true,
-    "feasible_fixture": {
-      "eligible": ["A_WHEAT3", "B_LAND"],
-      "selected": ["A_WHEAT3", "B_LAND"],
-      "plan_status": "valid",
-      "executed": ["act-buy-land", "act-buy-seed-wheat-3"],
-      "next_cash": 0
-    },
-    "conflict_fixture": {
-      "eligible": ["A_WHEAT3", "B_LAND"],
-      "selected": ["A_WHEAT3", "B_LAND"],
-      "plan_status": "invalid",
-      "plan_reason": "resource_claim_conflict:cash",
-      "executed": [],
-      "next_state": null
-    }
+  "boundary": "PASS does not imply terminal-score improvement or Battle integration correctness. It means the Snapshot candidate satisfies the current semantic adoption gate.",
+  "checks": {
+    "action_requirement_failure_is_explicit": true,
+    "both_rules_eligible_from_same_snapshot": true,
+    "both_rules_remain_selected": true,
+    "no_action_executed_after_invalid_plan": true,
+    "no_next_state_committed_after_invalid_plan": true,
+    "official_land_prices_known": true,
+    "official_wheat3_cost_is_30": true
+  },
+  "scope": "semantic default only",
+  "snapshot_adoption_gate": "PASS",
+  "wheat3_land_trace": {
+    "eligible": ["A_WHEAT3", "B_LAND"],
+    "selected": ["A_WHEAT3", "B_LAND"],
+    "plan_status": "invalid",
+    "plan_reason": "requirement_failed:act-buy-land",
+    "executed": [],
+    "next_state": null
   }
 }
