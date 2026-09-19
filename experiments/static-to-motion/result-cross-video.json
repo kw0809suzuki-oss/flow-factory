@@ -1,0 +1,10 @@
+{
+  "prior_clip": "力の胎動.mp4",
+  "replication_clip": "秒版_Structure_Activation（構造起動.mp4",
+  "replication_status": "partial",
+  "exact_feature_set_replicated": false,
+  "comparison_method_replicated": true,
+  "key_failure": "circular motif changes semantic/spatial role across the second clip",
+  "candidate_shift": "from fixed feature retention -> generic preserved/transformed relation comparison",
+  "boundary": "Manual visual coding of 12 sampled frames. The second video is distinct but belongs to the same broader project family, so cross-family generality is not established."
+}
