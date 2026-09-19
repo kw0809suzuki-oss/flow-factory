@@ -1,0 +1,35 @@
+{
+  "name": "market-growth-raw-intake-v0.1",
+  "purpose": "Minimum raw comparison payload required to re-enter JOB-MARKET-GROWTH-001 without inventing unobserved events.",
+  "required_fields": [
+    "run_id",
+    "variant",
+    "seed",
+    "turn",
+    "self_action",
+    "opponent_action",
+    "wheat_inventory",
+    "wheat_price",
+    "self_money",
+    "opponent_money"
+  ],
+  "constraints": {
+    "variant": [
+      "baseline",
+      "full_v1"
+    ],
+    "turn_min": 2,
+    "turn_max": 120,
+    "pairing_key": [
+      "seed",
+      "turn"
+    ],
+    "note": "Rows are only comparable when baseline and full_v1 share the same seed and turn."
+  },
+  "reentry_ready_when": [
+    "at least one seed has paired baseline/full_v1 rows covering turn 2 through 120",
+    "wheat_inventory and wheat_price are numeric",
+    "self_action and opponent_action are present for each paired turn"
+  ],
+  "boundary": "This contract defines data sufficiency only. It does not assert causality or predict terminal outcome."
+}
