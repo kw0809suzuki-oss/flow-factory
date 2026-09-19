@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "id": "comp001_realuse_missing",
+      "handoff_created_at": "2026-09-18T16:58:54.465Z",
+      "premise_claims": [
+        {
+          "key": "real_work_evidence_exists",
+          "value": false
+        }
+      ],
+      "newer_evidence": [
+        {
+          "artifact_ref": "1jyZZn3OtJsxb28jc5GdiQnlHWLVOUfKzyl8alySNbd0",
+          "observed_at": "2026-09-18T09:59:23.504Z",
+          "claims": {
+            "real_work_evidence_exists": true
+          }
+        },
+        {
+          "artifact_ref": "17_4aD-mLh7vPU06hlnPrCniJ2_rMUImOTj9muB6DhKw",
+          "observed_at": "2026-09-18T23:56:43.925Z",
+          "claims": {
+            "real_work_evidence_exists": true
+          }
+        }
+      ],
+      "expected": "stale"
+    },
+    {
+      "id": "no_newer_conflict",
+      "handoff_created_at": "2026-09-19T00:35:20.165Z",
+      "premise_claims": [
+        {
+          "key": "cross_family_replication_done",
+          "value": false
+        }
+      ],
+      "newer_evidence": [],
+      "expected": "fresh"
+    }
+  ]
+}
