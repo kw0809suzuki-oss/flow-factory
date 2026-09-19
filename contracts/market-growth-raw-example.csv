@@ -1,0 +1,3 @@
+run_id,variant,seed,turn,self_action,opponent_action,wheat_inventory,wheat_price,self_money,opponent_money
+example-baseline,baseline,3202,2,HOLD,HOLD,10,34,1000,1000
+example-full,full_v1,3202,2,HOLD,HOLD,8,34,1000,1000
