@@ -1,14 +1,14 @@
 # Semantic Kernel v2 Spike
 
-Minimal, Kaggriculture-independent spike for the Rule Engine semantics in the v2 parent spec.
+Minimal semantic-kernel spike for the Rule Engine contract in the Kaggriculture v2 parent spec.
 
 ## Scope
 
-This experiment fixes only the semantic boundary:
+The semantic boundary remains:
 
 `StateSnapshot -> evaluate -> resolve -> plan -> apply -> next StateSnapshot`
 
-It deliberately does **not** integrate with Kaggriculture, battle strategy, or Adoption Policy execution.
+The kernel itself is Kaggriculture-independent. A thin fixture adapter now maps the WHEAT3 / LAND boundary into this model without connecting to Battle runtime.
 
 ## Runtime types
 
@@ -58,17 +58,56 @@ That choice directly tests the parent contract that `plan()` must not silently r
 5. A opens C; C waits until the next step.
 6. Non-commutative Actions with no dependency/phase are rejected; explicit phase makes the plan deterministic.
 
-## Run
+Local result: **6 / 6 PASS**.
+
+## Kaggriculture fixture adapter
+
+`kaggriculture_adapter.py` maps the current WHEAT3 / LAND semantic fixture into the kernel.
+
+The adapter deliberately requires `land_claim` as an explicit input. It does not infer or invent the production BUY_LAND resource claim.
+
+Adapter gate cases verify:
+
+- unknown `land_claim` remains Unknown and is rejected at the adapter boundary;
+- a jointly feasible WHEAT3 / LAND fixture preserves both eligibility and selection;
+- an over-claiming fixture stops at `plan()` without erasing either selected Rule;
+- reversing Rule declaration order does not change the result.
+
+Local result: **4 / 4 PASS**.
+
+## Snapshot Adoption Gate
+
+Run:
 
 ```bash
 cd experiments/semantic-kernel-v2
-python -m unittest -v test_semantic_kernel.py
+python -m unittest -v test_semantic_kernel.py test_kaggriculture_adapter.py
+python snapshot_adoption_gate.py
 ```
+
+Current gate result: **HOLD**.
+
+Reason: semantic adapter behavior is consistent, but the production BUY_LAND resource claim is still Unknown in current factory evidence. The gate refuses to upgrade Snapshot to production semantics by guessing that domain value.
+
+The recorded output is in:
+
+`snapshot-adoption-gate-result.json`
 
 ## Boundary
 
-Passing these tests is evidence of semantic consistency for the small pure-state model only. It is not yet evidence that Snapshot semantics improves Kaggriculture terminal score or should be adopted as the final production semantics.
+The current evidence proves only:
 
-Next gate after this spike:
+- the pure semantic kernel passes its six conformance fixtures;
+- the thin WHEAT3 / LAND adapter preserves the kernel responsibility split;
+- Unknown domain data can remain Unknown without collapsing the pipeline.
 
-`6 fixture tests -> Snapshot Adoption Gate -> Kaggriculture Adapter -> Battle Integration`
+It does **not** yet prove:
+
+- the production BUY_LAND claim or operational requirements;
+- that Snapshot semantics should be the final Kaggriculture runtime default;
+- terminal-score or win-rate improvement;
+- Battle integration correctness.
+
+Current route:
+
+`Parent Spec -> Pure Semantic Kernel -> 6/6 -> Fixture Adapter -> 4/4 -> Snapshot Adoption Gate: HOLD -> resolve domain evidence -> Kaggriculture Adapter -> Battle Integration`
