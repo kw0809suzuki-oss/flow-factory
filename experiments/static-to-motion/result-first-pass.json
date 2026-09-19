@@ -1,0 +1,24 @@
+{
+  "samples": 5,
+  "video_duration_seconds": 3.041667,
+  "stable_relations": [
+    "female_android",
+    "white_black_armor",
+    "blue_luminous_core",
+    "circular_field",
+    "floating_symbols"
+  ],
+  "transformed_dimensions": {
+    "framing_distinct_values": 5,
+    "pose_distinct_values": 5,
+    "text_layer_values": [
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
+  },
+  "observed_effect": "Across four ordered stills and one representative MP4 frame, a central subject/core/field/symbol relation remained present while framing, pose, and text-layer presentation changed.",
+  "boundary": "Manual visual observation only; one representative video frame from a ~3.04s MP4. No claim of full temporal persistence, causal production path, or creative intent."
+}
