@@ -1,0 +1,22 @@
+{
+  "snapshot_adoption_gate": "HOLD",
+  "reason": "semantic adapter behavior is consistent, but production BUY_LAND resource claim is still unknown in the current factory evidence",
+  "observations": {
+    "unknown_domain_value_preserved": true,
+    "feasible_fixture": {
+      "eligible": ["A_WHEAT3", "B_LAND"],
+      "selected": ["A_WHEAT3", "B_LAND"],
+      "plan_status": "valid",
+      "executed": ["act-buy-land", "act-buy-seed-wheat-3"],
+      "next_cash": 0
+    },
+    "conflict_fixture": {
+      "eligible": ["A_WHEAT3", "B_LAND"],
+      "selected": ["A_WHEAT3", "B_LAND"],
+      "plan_status": "invalid",
+      "plan_reason": "resource_claim_conflict:cash",
+      "executed": [],
+      "next_state": null
+    }
+  }
+}
