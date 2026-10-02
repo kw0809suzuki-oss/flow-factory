@@ -1,0 +1,40 @@
+{
+  "probe": "handoff-freshness-unknown-v0",
+  "date": "2026-10-02",
+  "branch": "experiment/handoff-freshness-unknown-v0-20261002",
+  "baseline_observation": {
+    "case": "newer evidence exists but no claim is comparable to the handoff premise",
+    "main_behavior": "fresh",
+    "expected_by_schema": "unknown",
+    "cause": "final fresh condition contained 'or True', making unknown unreachable"
+  },
+  "candidate_results": [
+    {
+      "id": "comp001_realuse_missing",
+      "expected": "stale",
+      "got": "stale",
+      "pass": true
+    },
+    {
+      "id": "no_newer_conflict",
+      "expected": "fresh",
+      "got": "fresh",
+      "pass": true
+    },
+    {
+      "id": "newer_noncomparable_evidence",
+      "expected": "unknown",
+      "got": "unknown",
+      "pass": true
+    },
+    {
+      "id": "newer_comparable_same_premise",
+      "expected": "fresh",
+      "got": "fresh",
+      "pass": true
+    }
+  ],
+  "all_pass": true,
+  "boundary": "This proves the branch preserves the schema's fresh/stale/unknown distinction for these four cases. It does not prove truth or sufficiency of newer evidence.",
+  "promotion": "not_promoted"
+}

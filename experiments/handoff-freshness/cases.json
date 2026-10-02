@@ -38,6 +38,46 @@
       ],
       "newer_evidence": [],
       "expected": "fresh"
+    },
+    {
+      "id": "newer_noncomparable_evidence",
+      "handoff_created_at": "2026-09-19T00:00:00.000Z",
+      "premise_claims": [
+        {
+          "key": "target_ready",
+          "value": false
+        }
+      ],
+      "newer_evidence": [
+        {
+          "artifact_ref": "unrelated-observation",
+          "observed_at": "2026-09-19T01:00:00.000Z",
+          "claims": {
+            "other_field": true
+          }
+        }
+      ],
+      "expected": "unknown"
+    },
+    {
+      "id": "newer_comparable_same_premise",
+      "handoff_created_at": "2026-09-19T00:00:00.000Z",
+      "premise_claims": [
+        {
+          "key": "target_ready",
+          "value": false
+        }
+      ],
+      "newer_evidence": [
+        {
+          "artifact_ref": "same-premise-observation",
+          "observed_at": "2026-09-19T01:00:00.000Z",
+          "claims": {
+            "target_ready": false
+          }
+        }
+      ],
+      "expected": "fresh"
     }
   ]
 }
